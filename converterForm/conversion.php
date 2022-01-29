@@ -26,18 +26,18 @@ class Form
 class ConverterForm
 {
   // // constructor takes in object of type Form
-// public function __construct(Form $form) {
-//   // assigns title property from form
-//   $this->title = $form->title;
-//   // define standard units of conversion for this form's calculations
-//   $this->unit = 1.8;
-//   $this->f_base = 32;
-//   $this->k_base = 273.15;
-//   $this->r_base = 459.67;
-//   // define strings for form output and errors
-//   $this->out_Str = '';
-//   $this->error_msg = '';
-// }
+public function __construct(Form $form) {
+  // assigns title property from form
+  $this->title = $form->title;
+  // define standard units of conversion for this form's calculations
+   $this->unit = 1.8;
+   $this->f_base = 32;
+   $this->k_base = 273.15;
+   $this->r_base = 459.67;
+   // define strings for form output and errors
+   $this->out_Str = '';
+   $this->error_msg = '';
+ }
 // // conversion function for fahrenheit (we already know that the value-to-convert is fahrenheit because generateOutput() sessed out the first scale value and called this function accordingly)
 // private function fahrenheitTo($input, $scale)
 // {
