@@ -40,17 +40,17 @@ public function __construct(Form $form) {
  }
 // // conversion function for fahrenheit (we already know that the value-to-convert is fahrenheit because generateOutput() sessed out the first scale value and called this function accordingly)
 // private function fahrenheitTo($input, $scale)
-// {
-//   if ($scale == "cel") {
-//     return number_format(((int)$input - $this->f_base) * (5/9), 2);
-//   } elseif ($scale == "kel") {
-//     return number_format((((int)$input - $this->f_base) * (5/9) + $this->k_base), 2);
-//   } elseif ($scale == "ran") {
-//     return number_format(((int)$input + $this->r_base), 2);
-//   } elseif ($scale == "fahr") { // if scales are the same
-//     return number_format(((int)$input), 2);
-//   }
-// }
+{
+  if ($scale == "cel") {
+    return number_format(((int)$input - $this->f_base) * (5/9), 2);
+  } elseif ($scale == "kel") {
+    return number_format((((int)$input - $this->f_base) * (5/9) + $this->k_base), 2);
+  } elseif ($scale == "ran") {
+    return number_format(((int)$input + $this->r_base), 2);
+  } elseif ($scale == "fahr") { // if scales are the same
+    return number_format(((int)$input), 2);
+  }
+}
 // // conversion function for celsius
 // private function celsiusTo($input, $scale)
 // {
