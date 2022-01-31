@@ -26,87 +26,98 @@ class Form
 class ConverterForm
 {
   // // constructor takes in object of type Form
-public function __construct(Form $form) {
-  // assigns title property from form
-  $this->title = $form->title;
-  // define standard units of conversion for this form's calculations
-  //  $this->unit = 1.8;
-  //  $this->f_base = 32;
-  //  $this->k_base = 273.15;
-  //  $this->r_base = 459.67;
-  //  // define strings for form output and errors
-  //  $this->out_Str = '';
-  //  $this->error_msg = '';
- }
-// // conversion function for fahrenheit (we already know that the value-to-convert is fahrenheit because generateOutput() sessed out the first scale value and called this function accordingly)
-// private function fahrenheitTo($input, $scale)
-{
-  if ($scale == "cel") {
-    return number_format(((int)$input - $this->f_base) * (5/9), 2);
-  } elseif ($scale == "kel") {
-    return number_format((((int)$input - $this->f_base) * (5/9) + $this->k_base), 2);
-  } elseif ($scale == "ran") {
-    return number_format(((int)$input + $this->r_base), 2);
-  } elseif ($scale == "fahr") { // if scales are the same
-    return number_format(((int)$input), 2);
+  public function __construct(Form $form)
+  {
+    // assigns title property from form
+    $this->title = $form->title;
+    // define standard units of conversion for this form's calculations
+    $this->unit = 1.8;
+    $this->f_base = 32;
+    $this->k_base = 273.15;
+    $this->r_base = 459.67;
+    // define strings for form output and errors
+    $this->out_Str = "";
+    $this->error_msg = "";
   }
-}
-// // conversion function for celsius
-// private function celsiusTo($input, $scale)
-// {
-//   if ($scale == "fahr") {
-//     return number_format(((int)($input * (9/5)) + $this->f_base), 2);
-//   } elseif ($scale == "kel") {
-//     return number_format((((int)$input + $this->k_base) * (5/9)), 2);
-//   } elseif ($scale == "ran") {
-//     return number_format((((int)$input * $this->unit) + $this->r_base), 2);
-//   } elseif ($scale == "cel") {
-//     return number_format(((int)$input), 2);
-//   }
-// }
-// // conversion function for kelvin
-// private function kelvinTo($input, $scale)
-// {
-//   if ($scale == "fahr") {
-//     return number_format((((int)$input - $this->k_base) * $this->unit + $this->f_base), 2);
-//   } elseif ($scale == "cel") {
-//     return number_format(((int)$input - $this->k_base), 2);
-//   } elseif ($scale == "ran") {
-//     return number_format(((int)$input * $this->unit), 2);
-//   } elseif ($scale == "kel") {
-//     return number_format(((int)$input), 2);
-//   }
-// }
-// // conversion function for rankine
-// private function rankineTo($input, $scale)
-// {
-//   if ($scale == "fahr") {
-//     return number_format(((int)$input - $this->r_base), 2);
-//   } elseif ($scale == "cel") {
-//     return number_format((((int)$input - $this->r_base) * (5/9)), 2);
-//   } elseif ($scale == "kel") {
-//     return number_format(((int)$input / $this->unit), 2);
-//   } elseif ($scale == "ran") {
-//     return number_format(((int)$input), 2);
-//   }
-// }
-// // function to decide which form method to call based on string values of scale arguments
-// public function generateOutput($scale1, $scale2, $conv) {
-//   if ($scale1 == "fahr") {
-//     $converted_out = $this->fahrenheitTo($conv, $scale2);
-//   }
-//   if ($scale1 == "cel") {
-//     $converted_out = $this->celsiusTo($conv, $scale2);
-//   }
-//   if ($scale1 == "kel") {
-//     $converted_out = $this->kelvinTo($conv, $scale2);
-//   }
-//   if ($scale1 == "ran") {
-//     $converted_out = $this->rankineTo($conv, $scale2);
-//   }
-//   // return converted value
-//   echo '<div class="form-tag"><p>The answer is '. $converted_out .' degrees.</p></div>';
-// }
+  // // conversion function for fahrenheit (we already know that the value-to-convert is fahrenheit because generateOutput() sessed out the first scale value and called this function accordingly)
+  private function fahrenheitTo($input, $scale)
+  {
+    if ($scale == "cel") {
+      return number_format(((int) $input - $this->f_base) * (5 / 9), 2);
+    } elseif ($scale == "kel") {
+      return number_format(
+        ((int) $input - $this->f_base) * (5 / 9) + $this->k_base,
+        2
+      );
+    } elseif ($scale == "ran") {
+      return number_format((int) $input + $this->r_base, 2);
+    } elseif ($scale == "fahr") {
+      // if scales are the same
+      return number_format(((int) $input), 2);
+    }
+  }
+  // // conversion function for celsius
+  private function celsiusTo($input, $scale)
+  {
+    if ($scale == "fahr") {
+      return number_format((int) ($input * (9 / 5)) + $this->f_base, 2);
+    } elseif ($scale == "kel") {
+      return number_format(((int) $input + $this->k_base) * (5 / 9), 2);
+    } elseif ($scale == "ran") {
+      return number_format((int) $input * $this->unit + $this->r_base, 2);
+    } elseif ($scale == "cel") {
+      return number_format(((int) $input), 2);
+    }
+  }
+  // // conversion function for kelvin
+  private function kelvinTo($input, $scale)
+  {
+    if ($scale == "fahr") {
+      return number_format(
+        ((int) $input - $this->k_base) * $this->unit + $this->f_base,
+        2
+      );
+    } elseif ($scale == "cel") {
+      return number_format((int) $input - $this->k_base, 2);
+    } elseif ($scale == "ran") {
+      return number_format((int) $input * $this->unit, 2);
+    } elseif ($scale == "kel") {
+      return number_format(((int) $input), 2);
+    }
+  }
+  // conversion function for rankine
+  private function rankineTo($input, $scale)
+  {
+    if ($scale == "fahr") {
+      return number_format((int) $input - $this->r_base, 2);
+    } elseif ($scale == "cel") {
+      return number_format(((int) $input - $this->r_base) * (5 / 9), 2);
+    } elseif ($scale == "kel") {
+      return number_format((int) $input / $this->unit, 2);
+    } elseif ($scale == "ran") {
+      return number_format(((int) $input), 2);
+    }
+  }
+  // // function to decide which form method to call based on string values of scale arguments
+  public function generateOutput($scale1, $scale2, $conv)
+  {
+    if ($scale1 == "fahr") {
+      $converted_out = $this->fahrenheitTo($conv, $scale2);
+    }
+    if ($scale1 == "cel") {
+      $converted_out = $this->celsiusTo($conv, $scale2);
+    }
+    if ($scale1 == "kel") {
+      $converted_out = $this->kelvinTo($conv, $scale2);
+    }
+    if ($scale1 == "ran") {
+      $converted_out = $this->rankineTo($conv, $scale2);
+    }
+    // return converted value
+    echo '<div class="form-tag"><p>The answer is ' .
+      $converted_out .
+      " degrees.</p></div>";
+  }
 } // end ConverterForm class
 // declares an array to store form data, to be passed to the Form constructor to generate form fields (we didn't get as far along with implementing this concept, but this is the key to creating multiple forms with a variable number of form fields)
 $form_data = [
